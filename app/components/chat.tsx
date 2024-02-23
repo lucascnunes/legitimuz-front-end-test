@@ -40,7 +40,7 @@ export default function Chat({user, welcomeMessage}: ChatProps) {
           id: Math.random(),
           text: newMessage,
           user,
-          sender: false
+          sender: true // true = user sended, false = chatbot sended
         }
       ])
 
