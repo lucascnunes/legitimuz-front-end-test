@@ -18,7 +18,7 @@ export default function Chat({user, welcomeMessage}: ChatProps) {
     useEffect(() => {
         setTimeout(() => {
           setMessages([...messages, {
-            id: Math.random(),
+            id: crypto.randomUUID(),
             text: 'Olá, estou interessado na vaga, comecarei agora mesmo.',
             user,
             sender: true,
@@ -37,7 +37,7 @@ export default function Chat({user, welcomeMessage}: ChatProps) {
       setMessages([
         ...messages, 
         {
-          id: Math.random(),
+          id: crypto.randomUUID(),
           text: newMessage,
           user,
           sender: true // true = user sended, false = chatbot sended
