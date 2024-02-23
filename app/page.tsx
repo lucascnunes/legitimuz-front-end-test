@@ -19,6 +19,7 @@ export default function Home() {
     }
   ];
 
+  // select a random user for the example
   const user = users[Math.floor(Math.random() * 3)]
 
   const welcome = `Olá ${user.name}, como podemos lhe ajudar?`;
