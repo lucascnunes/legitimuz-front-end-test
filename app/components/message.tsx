@@ -1,14 +1,14 @@
 import type { MessageProps } from '../props/message';
 
-export default function Message({ text, user, sender }: MessageProps) {
+export default function Message({ id, text, user, sender }: MessageProps) {
   return !sender ? (
-    <div className="flex items-center gap-4 my-4">
+    <div id={`message_${id}`} className="flex items-center gap-4 my-4">
       <div className="rounded-lg bg-gray-100 p-4 text-sm max-w-[85%] self-start">
         {text}
       </div>
     </div>
   ) : (
-    <div className="flex items-center gap-4 my-4">
+    <div id={`message_${id}`} className="flex items-center gap-4 my-4">
       <img
         alt="User avatar"
         className="rounded-full"

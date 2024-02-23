@@ -4,30 +4,25 @@ import Message from '../components/message';
 import { UserProps } from '../props/user';
 import React, { useEffect, useState } from 'react';
 import { MessageProps } from '../props/message';
+
 type ChatProps = {
     user: UserProps,
+    welcomeMessage: string,
 }
 
-export default function Chat({user}: ChatProps) {
+export default function Chat({user, welcomeMessage}: ChatProps) {
     const [newMessage, setNewMessage] = useState('')
-    const welcomeMessage = `Olá ${user.name}, como podemos lhe ajudar?`
 
     // messages are going to be pulled from api
-    // const messages = [
-    //   {
-    //     text: 'Olá, estou interessado na vaga, comecarei agora mesmo.',
-    //     user,
-    //     sender: true,
-    //   },
-    // ];
     const [messages, setMessages] = useState<MessageProps[]>([])
     useEffect(() => {
         setTimeout(() => {
           setMessages([...messages, {
-                text: 'Olá, estou interessado na vaga, comecarei agora mesmo.',
-                user,
-                sender: true,
-              },])
+            id: Math.random(),
+            text: 'Olá, estou interessado na vaga, comecarei agora mesmo.',
+            user,
+            sender: true,
+          },])
         }, 2000)
     }, [])
 
@@ -42,6 +37,7 @@ export default function Chat({user}: ChatProps) {
       setMessages([
         ...messages, 
         {
+          id: Math.random(),
           text: newMessage,
           user,
           sender: false
@@ -74,7 +70,7 @@ export default function Chat({user}: ChatProps) {
           </div>
         </div>
         {messages.map(m => (
-          <Message text={m.text} user={m.user} sender={m.sender} />
+          <Message key={m.id} id={m.id} text={m.text} user={m.user} sender={m.sender} />
         ))}
         
         <form onSubmit={handleSubmitNewMessage} className="flex items-center gap-4 border-t p-4">
